@@ -28,6 +28,6 @@ class TopAlbumsApp
   #design pattern front controller for call method
 end
 
-Rack::Handler::WEBrick.run(TopAlbumsApp.new)
+#Rack::Handler::WEBrick.run(TopAlbumsApp.new)
 
 
