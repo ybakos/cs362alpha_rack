@@ -1,5 +1,5 @@
 require 'rack'
-
+require 'erb'
 
 class  Album
 
