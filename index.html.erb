@@ -1,7 +1,15 @@
-require 'erb'
-
-weekday = Time.now.strftime('%A')
-simple_template = "Today is <%= weekday %>."
-
-renderer = ERB.new(simple_template)
-puts output = renderer.result()
+<!DOCTYPE html>
+<html>
+<head>
+<title>Top 100 Albums of All Time!</title>
+</head>
+<body>
+<table>
+<tr>
+<th>Rank</th>
+<th>Album Name</th>
+<th>Year</th>
+</tr>
+</table>
+</body>
+</html>
