@@ -19,31 +19,32 @@ class TopAlbumsApp
   include ERB::Util
 
   def initialize
+    @albums = Array.new
     @allOfTheAlbums = Array.new
     File.open("top_100_albums.txt", "r") do |file|
-      albums = file.readlines
+      @albums = file.readlines
     end
-    @allOfTheAlbums = albums.makeAlbums
+    @allOfTheAlbums = makeAlbums(@albums)
   end
 
   def call(env) 
     #Placeholder for rendering
-    ['200', {'Content-Type' => 'text/html'}, [albums.to_s]]
+
+    ['200', {'Content-Type' => 'text/html'}, [render]]
   end
 
-  def makeAlbums
-    albums.map.with_index do |i, j| 
-      album = Album.new
-      albumProperties = albums.split(',')
-      album.rank = j + 1
-      album.title = albumProperties[0]
-      album.year = albumProperties[1]
-      allOfTheAlbums << album
+  def makeAlbums(albums)
+    albums.map.with_index do |albumInfo, rank| 
+      albumProperties = albumInfo.split(',')
+      album = Album.new(rank + 1, albumProperties[0], albumProperties[1])
+      @allOfTheAlbums << album
+    end
   end
   #design pattern front controller for call method
 
-  def render()
-    ERB.new(index.html.erb).result(binding)
+  def render
+    raw = File.read(index.html.erb)
+    ERB.new(raw).result(binding)
   end
 
 end
