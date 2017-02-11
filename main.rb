@@ -1,5 +1,5 @@
 require 'rack'
-
+require 'erb'
 
 class  Album
 
@@ -16,6 +16,7 @@ end
 
 
 class TopAlbumsApp
+  include ERB::Util
 
   def call(env) 
     albums = []
@@ -23,12 +24,15 @@ class TopAlbumsApp
       albums = file.readlines
     end
 
+    albums.map.with_index { |title, year| do 
+      albums.split(',') }
+
     ['200', {'Content-Type' => 'text/html'}, [albums.to_s]]
   end
   #design pattern front controller for call method
 
   def render()
-    ERB.new(@template).result(binding)
+    ERB.new(index.html.erb).result(binding)
   end
 
 end
