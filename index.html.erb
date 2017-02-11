@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Top 100 Albums of All Time!</title>
+  <title>Top 100 Albums of All Time!</title>
 </head>
 <body>
-<table>
-<tr>
-<th>Rank</th>
-<th>Album Name</th>
-<th>Year</th>
-</tr>
-</table>
+  <table>
+    <tr>
+      <th>Rank</th>
+      <th>Album Name</th>
+      <th>Year</th>
+    </tr>
+      <% @allOfTheAlbums.each do | album | %>
+        <tr>
+	         <td><%= @album.rank %></td>
+	         <td><%= @album.title %></td>
+	         <td><%= @album.year %></td>
+        </tr>
+      <% end %>
+  </table>
 </body>
 </html>
