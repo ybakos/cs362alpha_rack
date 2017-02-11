@@ -8,10 +8,10 @@
 <h1>Top 100 Albums of All Time!</h1>
   <form action="/" method="get">
     Sort by:
-    <button name="rank" type="submit" value="test1">Rank</button>
-    <button name="album" type="submit" value="test2">Album</button>
-    <button name="length" type="submit" value="test3">Album Length</button>
-     <button name="year" type="submit" value="test4">Year</button>
+    <button name="rank" type="button" onClick=<% sortRank %> value="test1">Rank</button>
+     <button name="year" type="button" onClick=<% sortYear %> value="test4">Year</button>
+     <button name="album" type="button" onClick=<% sortTitle %> value="test2">Album</button>
+     <button name="length" type="button" onClick=<% sortLength %> value="test3">Album Length</button>
   </form>
   <table>
     <tr>

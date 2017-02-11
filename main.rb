@@ -47,6 +47,22 @@ class TopAlbumsApp
     ERB.new(raw).result(binding)
   end
 
+  def sortYear
+    @allOfTheAlbums.sort_by! {|album| album.year}
+  end 
+
+  def sortTitle
+    @allOfTheAlbums.sort_by! {|album| album.title}
+  end 
+
+  def sortRank
+    @allOfTheAlbums.sort_by! {|album| album.rank}
+  end 
+  
+  def sortLength
+    @allOfTheAlbums.sort_by! {|album| album.title.length}
+  end 
+
 end
 
 #Rack::Handler::WEBrick.run(TopAlbumsApp.new)
