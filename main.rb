@@ -16,6 +16,7 @@ end
 
 
 class TopAlbumsApp
+  include ERB::Util
 
   def call(env) 
     albums = []
