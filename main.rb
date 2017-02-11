@@ -14,6 +14,20 @@ class  Album
 
 end
 
+allOfTheAlbums = Array.new
+
+def makeAlbums(array)
+
+  albums.map.with_index do |i, j| 
+    album = Album.new
+    albumProperties = albums.split(',')
+    album.rank = j + 1
+    album.title = albumProperties[0]
+    album.year = albumProperties[1]
+    allOfTheAlbums << album
+
+    end
+
 
 class TopAlbumsApp
   include ERB::Util
@@ -24,8 +38,7 @@ class TopAlbumsApp
       albums = file.readlines
     end
 
-    albums.map.with_index { |title, year| do 
-      albums.split(',') }
+    makeAlbums(albums)
 
     ['200', {'Content-Type' => 'text/html'}, [albums.to_s]]
   end
