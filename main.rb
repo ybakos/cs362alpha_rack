@@ -37,13 +37,13 @@ class TopAlbumsApp
     albums.map.with_index do |albumInfo, rank| 
       albumProperties = albumInfo.split(',')
       album = Album.new(rank + 1, albumProperties[0], albumProperties[1])
-      @allOfTheAlbums << album
+      @allOfTheAlbums[rank] = album
     end
   end
   #design pattern front controller for call method
 
   def render
-    raw = File.read(index.html.erb)
+    raw = File.read("index.html.erb")
     ERB.new(raw).result(binding)
   end
 
