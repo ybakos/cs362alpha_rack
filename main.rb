@@ -1,23 +1,17 @@
 require 'rack'
-require 'erb' # I don't believe you need this. ERB is part of the Ruby std lib.
 
 class  Album
 
-  attr_accessor # Why is this still here? I made a comment on GH about this.
-  attr_reader(:rank, :title, :year) # Why are the parens still here? I made a comment on GH about this.
+  attr_reader :rank, :title, :year 
 
   def initialize(rank, title, year)
     @rank = rank
     @title = title
     @year = year
   end
-
 end
 
 class TopAlbumsApp
-
-  include ERB::Util #Why is this here?
-
   def initialize
     @albums = Array.new
     @allOfTheAlbums = Array.new # See my comment in GH about this.
@@ -28,8 +22,6 @@ class TopAlbumsApp
   end
 
   def call(env)
-    #Placeholder for rendering
-
     ['200', {'Content-Type' => 'text/html'}, [render]]
   end
 
@@ -40,7 +32,6 @@ class TopAlbumsApp
       @allOfTheAlbums[rank] = album
     end
   end
-  #design pattern front controller for call method
 
   def render
     raw = File.read("index.html.erb")
@@ -64,7 +55,3 @@ class TopAlbumsApp
   end
 
 end
-
-#Rack::Handler::WEBrick.run(TopAlbumsApp.new)
-# Avoid committing commented code!
-
