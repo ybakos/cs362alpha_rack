@@ -1,10 +1,10 @@
 require 'rack'
-require 'erb'
+require 'erb' # I don't believe you need this. ERB is part of the Ruby std lib.
 
 class  Album
 
-  attr_accessor
-  attr_reader(:rank, :title, :year)
+  attr_accessor # Why is this still here? I made a comment on GH about this.
+  attr_reader(:rank, :title, :year) # Why are the parens still here? I made a comment on GH about this.
 
   def initialize(rank, title, year)
     @rank = rank
@@ -15,26 +15,26 @@ class  Album
 end
 
 class TopAlbumsApp
-  
-  include ERB::Util
+
+  include ERB::Util #Why is this here?
 
   def initialize
     @albums = Array.new
-    @allOfTheAlbums = Array.new
+    @allOfTheAlbums = Array.new # See my comment in GH about this.
     File.open("top_100_albums.txt", "r") do |file|
       @albums = file.readlines
     end
     @allOfTheAlbums = makeAlbums(@albums)
   end
 
-  def call(env) 
+  def call(env)
     #Placeholder for rendering
 
     ['200', {'Content-Type' => 'text/html'}, [render]]
   end
 
   def makeAlbums(albums)
-    albums.map.with_index do |albumInfo, rank| 
+    albums.map.with_index do |albumInfo, rank|
       albumProperties = albumInfo.split(',')
       album = Album.new(rank + 1, albumProperties[0], albumProperties[1])
       @allOfTheAlbums[rank] = album
@@ -49,22 +49,22 @@ class TopAlbumsApp
 
   def sortYear
     @allOfTheAlbums.sort_by! {|album| album.year}
-  end 
+  end
 
   def sortTitle
     @allOfTheAlbums.sort_by! {|album| album.title}
-  end 
+  end
 
   def sortRank
     @allOfTheAlbums.sort_by! {|album| album.rank}
-  end 
-  
+  end
+
   def sortLength
     @allOfTheAlbums.sort_by! {|album| album.title.length}
-  end 
+  end
 
 end
 
 #Rack::Handler::WEBrick.run(TopAlbumsApp.new)
-
+# Avoid committing commented code!
 
