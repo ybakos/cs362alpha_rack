@@ -1,5 +1,4 @@
 require_relative 'main'
-#include ERB::Util
 
 use Rack::Reloader, 0
 
