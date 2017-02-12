@@ -22,7 +22,28 @@ class TopAlbumsApp
   end
 
   def call(env)
-    ['200', {'Content-Type' => 'text/html'}, [render]]
+    request = Rack::Request.new(env)
+    response = Rack::Response.new
+
+    if request.path_info =='/year'
+      response = sortYear
+      ['200', {'Content-Type' => 'text/html'}, [render]]
+
+    elsif request.path_info =='/title'
+      response = sortTitle
+      ['200', {'Content-Type' => 'text/html'}, [render]]
+
+    elsif request.path_info =='/rank'
+      response = sortRank
+      ['200', {'Content-Type' => 'text/html'}, [render]]
+
+    elsif request.path_info =='/titleLength'
+      response = sortLength
+      ['200', {'Content-Type' => 'text/html'}, [render]]
+
+    else
+      ['200', {'Content-Type' => 'text/html'}, [render]]
+    end
   end
 
   def makeAlbums(albums)
