@@ -10,12 +10,14 @@
   <form action="/rank" method="POST">
     <input type="submit" value="Rank">
   </form>
-  <form action="/" method="get">
-    <!-- avoid using button tags unless you know what they are for. Form buttons that post forms to the server are not buttons! -->
-    <button name="rank" type="button" onClick=<% sortRank %> value="test1">Rank</button>
-     <button name="year" type="button" onClick=<% sortYear %> value="test4">Year</button>
-     <button name="album" type="button" onClick=<% sortTitle %> value="test2">Album</button>
-     <button name="length" type="button" onClick=<% sortLength %> value="test3">Album Length</button>
+  <form action="/year" method="POST">
+    <input type="submit" value="Year">
+  </form>
+  <form action="/title" method="POST">
+    <input type="submit" value="Title">
+  </form>
+  <form action="/titleLength" method="POST">
+    <input type="submit" value="Title Length">
   </form>
   <table>
     <tr>
@@ -23,7 +25,7 @@
       <th>Album Name</th>
       <th>Year</th>
     </tr>
-      <% @allOfTheAlbums.each do | album | %><!-- prefer |album| without the whitespace -->
+      <% @allOfTheAlbums.each do |album| %>
         <tr>
 	         <td><%= album.rank %></td>
 	         <td><%= album.title %></td>
