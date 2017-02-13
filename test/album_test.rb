@@ -17,4 +17,9 @@ class AlbumTest < Minitest::Test
 		@album.instance_variable_set(:@rank, -1)
 		refute @album.rank > 0
 	end
+
+	def test_AlbumRankIsLessThan101
+		@album.instance_variable_set(:@rank, 101)
+		refute @album.rank < 101
+	end
 end
