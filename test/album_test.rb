@@ -22,4 +22,9 @@ class AlbumTest < Minitest::Test
 		@album.instance_variable_set(:@rank, 101)
 		refute @album.rank < 101
 	end
+
+	def test_AlbumRankIsAnInteger
+		@album.instance_variable_set(:@rank, "one")
+		refute @album.rank.is_a? Integer
+	end
 end
