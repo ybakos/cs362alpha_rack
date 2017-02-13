@@ -1,4 +1,5 @@
 require 'minitest/autorun'
+require 'test/unit'
 
 require_relative '../main'
 
@@ -12,5 +13,8 @@ class AlbumTest < Minitest::Test
 		@album = Album.new(RANK, TITLE, YEAR)
 	end
 
-	# tests here
+	def test_AlbumRankIsGreaterThanZero
+		@album.instance_variable_set(:@rank, -1)
+		refute @album.rank > 0
+	end
 end
