@@ -1,37 +1,38 @@
+ENV['RACK_ENV'] = 'test'
 require 'minitest/autorun'
 require 'rack/test'
-require_relative '../main'
+require_relative '../main.rb'
+require_relative '../album.rb'
 
 class TopAlbumsAppTest < Minitest::Test
   include Rack::Test::Methods
-  
-  def setup
-#  	@albums = makeAlbums(@album_data)
-# 	@album = Album.new(RANK, TITLE, YEAR)
-    @TopAlbumsApp = TopAlbumsApp.new
-    @albums = makeAlbums(@album_data)
+
+  def app
+    TopAlbumsApp.new
   end
 
-  def test_sort_by_year
- 
-    get '/orderByYear'
+  def test_sort_by_album_year
+    get '/year'
     assert last_response.ok?
-    puts @rankedAlbums
-    assert_equal("Kind of Blue", @rankedAlbums.at(0).name)
+    flunk
   end
 
-   def test_sort_alphabetically
-
-    get '/orderAlphabetically'
+   def test_sort_album_title_alphabetically
+    get '/title'
     assert last_response.ok?
-    assert_equal("'Live' at The Apollo", @rankedAlbums.at(0).name)
+    flunk
   end
 
-def test_sort_by_album_title_length
-
-    get '/orderByAlbumNameLength'
+  def test_sort_by_album_title_length
+    get '/titleLength'
     assert last_response.ok?
-    assert_equal("Ten", @rankedAlbums.at(0).name)
+    flunk
   end
   
+  def test_sort_by_album_rank
+    get '/rank'
+    assert last_response.ok?
+    flunk
+  end
+
 end

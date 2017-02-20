@@ -1,3 +1,5 @@
+require 'rack'
+
 class Album
 
   attr_reader :rank, :title, :year 

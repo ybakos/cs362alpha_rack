@@ -1,6 +1,8 @@
 require 'rack'
+require 'erb'
 
 class TopAlbumsApp
+
   def initialize
     @album_data = Array.new
     @albums = Array.new
