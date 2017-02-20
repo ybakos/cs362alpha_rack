@@ -26,4 +26,11 @@ class AlbumTest < Minitest::Test
 		@album.instance_variable_set(:@rank, "one")
 		refute @album.rank.is_a? Integer
 	end
+
+	def test_AlbumHasCorrectSetup
+			assert_equal @album.year, "2017"
+			assert_equal @album.title, "Test Album"
+			assert_equal @album.rank, 1
+	end
+
 end

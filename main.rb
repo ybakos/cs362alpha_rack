@@ -75,8 +75,9 @@ class TopAlbumsApp
     @albums.sort_by! {|album| album.title.length}
   end
 
+#changed some stuff in isValid. there were two refutes
   def isValid
-    @albums.each { |album| refute album.rank > 0 && refute album.rank < 101}
+    @albums.each { |album| album.rank > 0 && album.rank < 101}
   end
 
 
