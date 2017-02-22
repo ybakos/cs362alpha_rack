@@ -8,13 +8,13 @@ class TopAlbumsAppTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
-    TopAlbumsApp.new
+    @albums = TopAlbumsApp.new
   end
 
   def test_sort_by_album_year
     get '/year'
     assert last_response.ok?
-    flunk
+    assert_equal @albums.at(0).year, 1959
   end
 
    def test_sort_album_title_alphabetically

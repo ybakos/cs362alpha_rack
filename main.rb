@@ -1,5 +1,6 @@
 require 'rack'
 require 'erb'
+require_relative 'album'
 
 class TopAlbumsApp
 
