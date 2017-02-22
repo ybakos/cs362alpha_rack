@@ -13,14 +13,14 @@ class AlbumTest < Minitest::Test
   end
 
   def test_album_rank_is_greater_than_zero
-    flunk
+    assert(@album.rank > 0)
   end
 
   def test_album_rank_is_less_than_101
-    flunk
+    assert(@album.rank < 101)
   end
 
-  def test_album_rank_is_an_integer
+  def test_album_rank_is_not_empty
     flunk
   end
 
