@@ -7,10 +7,11 @@ class TopAlbumsApp
   def initialize
     @album_data = Array.new
     @albums = Array.new
-    File.open("top_100_albums.txt", "r") do |file|
+    File.open(File.dirname(__FILE__) + '/top_100_albums.txt', "r") do |file|
       @album_data = file.readlines
     end
     @albums = makeAlbums(@album_data)
+    return @albums
   end
 
   def call(env)
@@ -47,7 +48,7 @@ class TopAlbumsApp
   end
 
   def render
-    raw = File.read("index.html.erb")
+    raw = File.read(File.dirname(__FILE__) + '/index.html.erb')
     ERB.new(raw).result(binding)
   end
 
@@ -67,10 +68,8 @@ class TopAlbumsApp
     @albums.sort_by! {|album| album.title.length}
   end
 
-#changed some stuff in isValid. there were two refutes
-  def isValid
-    @albums.each { |album| album.rank > 0 && album.rank < 101}
+  def at(x)
+    @albums.at(x)
   end
-
 
 end
