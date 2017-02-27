@@ -18,6 +18,10 @@ class AlbumTest < Minitest::Test
       assert_equal @album.year, YEAR
   end  
 
+  def test_album_rank_is_integer
+    assert(@album.rank.is_a?(Integer) == true)
+  end
+
   def test_album_rank_is_greater_than_zero
     assert(@album.rank > 0)
   end
