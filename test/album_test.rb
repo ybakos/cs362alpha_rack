@@ -12,9 +12,9 @@ class AlbumTest < Minitest::Test
   end
 
   def test_album_constructor
-      assert_equal @album.rank, RANK
-      assert_equal @album.title, TITLE
-      assert_equal @album.year, YEAR
+    assert_equal(@album.rank, RANK)
+    assert_equal(@album.title, TITLE)
+    assert_equal(@album.year, YEAR)
   end  
 
   def test_album_rank_is_integer
